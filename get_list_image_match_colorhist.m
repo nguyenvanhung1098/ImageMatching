@@ -7,7 +7,8 @@ function [list_image_match_colorhist, filenames] = get_list_image_match_colorhis
      red = imhist(images(:,:,1));
      blue = imhist(images(:,:,2));
      green = imhist(images(:,:,3));
-     images_hist = [red; blue; green];
+     [n m ] = size(red);
+     images_hist = [red; blue; green] / (m * n);
      % tinh color histogram cua anh nguon
      [mt_color_hist_dataset, filenames] = get_color_hist_dataset();
      total_images = numel(filenames);

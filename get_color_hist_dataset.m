@@ -14,7 +14,9 @@ function [mt_color_hist_dataset , filenames] = get_color_hist_dataset()
         
         blue = imhist(images(:,:,2));
         green = imhist(images(:,:,3));
+        [n , m] = size(red);
         images_hist = [red; blue; green];
+        images_hist = images_hist / (m * n) ;
         mt_color_hist_dataset = [mt_color_hist_dataset , images_hist ];     
     end 
 end

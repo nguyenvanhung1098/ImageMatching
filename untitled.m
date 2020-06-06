@@ -22,7 +22,7 @@ function varargout = untitled(varargin)
 
 % Edit the above text to modify the response to help untitled
 
-% Last Modified by GUIDE v2.5 31-May-2020 20:19:27
+% Last Modified by GUIDE v2.5 04-Jun-2020 16:11:43
 
 % Begin initialization code - DO NOT EDIT
 gui_Singleton = 1;
@@ -51,7 +51,15 @@ function untitled_OpeningFcn(hObject, eventdata, handles, varargin)
 % eventdata  reserved - to be defined in a future version of MATLAB
 % handles    structure with handles and user data (see GUIDATA)
 % varargin   command line arguments to untitled (see VARARGIN)
-
+imageresult = imread('image.png');
+axes(handles.axes1);
+imshow(imageresult);
+axes(handles.axes2);
+imshow(imageresult);
+axes(handles.axes3);
+imshow(imageresult);
+axes(handles.axes4);
+imshow(imageresult);
 % Choose default command line output for untitled
 handles.output = hObject;
 
@@ -174,7 +182,7 @@ if(DacTrung == 1)
        imshow(imageresult);
    end
 
-elseif (DacTrung == 3)
+elseif (DacTrung == 2)
     if(EUCLID == 1)
        [list_image_match_colormoments, filenames] = get_list_image_match_colormoments(path_images, EUCLID);
        f = fullfile(filenames(list_image_match_colormoments(2,1)).folder, filenames(list_image_match_colormoments(2,1)).name);
@@ -208,7 +216,7 @@ elseif (DacTrung == 3)
        axes(handles.axes4);
        imshow(imageresult);
    end
-elseif (DacTrung == 4)
+elseif (DacTrung == 3)
     if(EUCLID == 1)
        [list_image_match_LBP, filenames] = get_list_image_match_LBP(path_images, EUCLID);
        f = fullfile(filenames(list_image_match_LBP(2,1)).folder, filenames(list_image_match_LBP(2,1)).name);
@@ -241,9 +249,42 @@ elseif (DacTrung == 4)
        imageresult = imread(f);
        axes(handles.axes4);
        imshow(imageresult);
+    end
+elseif (DacTrung == 4)
+    if(EUCLID == 1)
+       [list_image_match_hist_HOG, filenames] = get_list_image_match_HOG(path_images, EUCLID);
+       f = fullfile(filenames(list_image_match_hist_HOG(2,1)).folder, filenames(list_image_match_hist_HOG(2,1)).name);
+       imageresult = imread(f);
+       axes(handles.axes2);
+       imshow(imageresult);
+       
+       f = fullfile(filenames(list_image_match_hist_HOG(2,2)).folder, filenames(list_image_match_hist_HOG(2,2)).name);
+       imageresult = imread(f);
+       axes(handles.axes3);
+       imshow(imageresult);
+       
+       f = fullfile(filenames(list_image_match_hist_HOG(2,3)).folder, filenames(list_image_match_hist_HOG(2,3)).name);
+       imageresult = imread(f);
+       axes(handles.axes4);
+       imshow(imageresult);
+   else
+       [list_image_match_hist_HOG, filenames] = get_list_image_match_HOG(path_images, 0);
+       f = fullfile(filenames(list_image_match_hist_HOG(2,1)).folder, filenames(list_image_match_hist_HOG(2,1)).name);
+       imageresult = imread(f);
+       axes(handles.axes2);
+       imshow(imageresult);
+       
+       f = fullfile(filenames(list_image_match_hist_HOG(2,2)).folder, filenames(list_image_match_hist_HOG(2,2)).name);
+       imageresult = imread(f);
+       axes(handles.axes3);
+       imshow(imageresult);
+       
+       f = fullfile(filenames(list_image_match_hist_HOG(2,3)).folder, filenames(list_image_match_hist_HOG(2,3)).name);
+       imageresult = imread(f);
+       axes(handles.axes4);
+       imshow(imageresult);
    end
 end
-
 % --- Executes on selection change in popupmenu4.
 function popupmenu4_Callback(hObject, eventdata, handles)
 % hObject    handle to popupmenu4 (see GCBO)
@@ -432,3 +473,20 @@ function edit_rank3_CreateFcn(hObject, eventdata, handles)
 if ispc && isequal(get(hObject,'BackgroundColor'), get(0,'defaultUicontrolBackgroundColor'))
     set(hObject,'BackgroundColor','white');
 end
+
+
+% --- Executes on button press in pushbutton11.
+function pushbutton11_Callback(hObject, eventdata, handles)
+% hObject    handle to pushbutton11 (see GCBO)
+% eventdata  reserved - to be defined in a future version of MATLAB
+% handles    structure with handles and user data (see GUIDATA)
+set(handles.edit1,'string',"");
+imageresult = imread('image.png');
+axes(handles.axes1);
+imshow(imageresult);
+axes(handles.axes2);
+imshow(imageresult);
+axes(handles.axes3);
+imshow(imageresult);
+axes(handles.axes4);
+imshow(imageresult);
